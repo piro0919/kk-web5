@@ -46,12 +46,12 @@ img {
 }
 
 .markdown-body a {
-  color: var(--color-brand-red);
+  color: var(--color-brand-red) !important;
 }
 
 .markdown-body h1 {
-  border-color: transparent;
-  margin-bottom: 0;
+  border-color: transparent !important;
+  margin-bottom: 0 !important;
 }
 
 .markdown-body > pre {
