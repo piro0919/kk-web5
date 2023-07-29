@@ -81,7 +81,7 @@
     "usehooks-ts": "2.9.1"
   },
   "devDependencies": {
-    "@kuma-ui/next-plugin": "1.1.0"
+    "@kuma-ui/next-plugin": "1.1.1"
   },
   "name": "kk-web5",
   "overrides": {
