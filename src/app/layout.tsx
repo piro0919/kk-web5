@@ -7,6 +7,8 @@ import { Analytics } from "@vercel/analytics/react";
 import "github-markdown-css";
 import localFont from "next/font/local";
 import { ReactNode } from "react";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import "ress";
 import "./globals.scss";
 import "./mq-settings.scss";
@@ -38,6 +40,14 @@ export default function RootLayout({ children }: RootLayoutProps): JSX.Element {
         <GoogleAnalytics />
         <Hotjar />
         <LogRocket />
+        <ToastContainer
+          autoClose={5000}
+          closeOnClick={true}
+          hideProgressBar={false}
+          pauseOnHover={false}
+          position="bottom-left"
+          theme="dark"
+        />
       </body>
     </html>
   );

@@ -15,11 +15,12 @@ type FieldValues = {
 };
 
 export type ContactProps = Pick<Props, "onVerify"> & {
+  isSubmitting: boolean;
   onSubmit: SubmitHandler<FieldValues>;
 };
 
 function Contact(
-  { onSubmit, onVerify }: ContactProps,
+  { isSubmitting, onSubmit, onVerify }: ContactProps,
   ref: ForwardedRef<Reaptcha>,
 ): JSX.Element {
   const {
@@ -218,9 +219,12 @@ function Contact(
               <Button
                 bg="colors.brandBlue"
                 color="colors.lightWhite"
+                disabled={isSubmitting}
                 fontFamily="arial"
+                opacity={isSubmitting ? 0.5 : 1}
                 px={24}
                 py={8}
+                transition="250ms"
               >
                 送信する
               </Button>
