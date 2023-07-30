@@ -13,14 +13,12 @@ export default function getBreakpoints<T extends Value>(
 ): T[] {
   const { lg, md, sm, xl } = breakpoint;
   const breakpoints = [sm, md, lg, xl].reduce<T[]>(
-    (previousBreakpoints, currentreakpoint, currentIndex) => {
-      return [
-        ...previousBreakpoints,
-        typeof currentreakpoint !== "undefined"
-          ? currentreakpoint
-          : previousBreakpoints[currentIndex - 1],
-      ];
-    },
+    (previousBreakpoints, currentreakpoint, currentIndex) => [
+      ...previousBreakpoints,
+      typeof currentreakpoint !== "undefined"
+        ? currentreakpoint
+        : previousBreakpoints[currentIndex - 1],
+    ],
     [],
   );
 
