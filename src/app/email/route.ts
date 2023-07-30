@@ -35,9 +35,8 @@ export async function POST(
     return NextResponse.json({ result: false }, { status: 500 });
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-  const { email, message, name, subject }: PostEmailRequestBody =
-    await request.json();
+  const { email, message, name, subject } =
+    (await request.json()) as PostEmailRequestBody;
 
   try {
     const transporter = nodemailer.createTransport({

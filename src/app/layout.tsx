@@ -6,6 +6,7 @@ import "@szhsin/react-menu/dist/transitions/slide.css";
 import { Analytics } from "@vercel/analytics/react";
 import "github-markdown-css";
 import localFont from "next/font/local";
+import NextTopLoader from "nextjs-toploader";
 import { ReactNode } from "react";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -47,6 +48,12 @@ export default function RootLayout({ children }: RootLayoutProps): JSX.Element {
           pauseOnHover={false}
           position="bottom-left"
           theme="dark"
+        />
+        <NextTopLoader
+          color="#234794"
+          height={2}
+          shadow={false}
+          showSpinner={false}
         />
       </body>
     </html>
