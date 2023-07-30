@@ -1,5 +1,5 @@
 "use client";
-import { Box, Flex, Heading, Link, Spacer } from "@kuma-ui/core";
+import { Box, Flex, Heading, Spacer } from "@kuma-ui/core";
 import axios, { AxiosResponse } from "axios";
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
@@ -7,7 +7,7 @@ import { ReactNode, useMemo } from "react";
 import ReactMarkdown from "react-markdown";
 import useScrollbarSize from "react-scrollbar-size";
 import SyntaxHighlighter from "react-syntax-highlighter";
-import style from "react-syntax-highlighter/dist/esm/styles/hljs/stackoverflow-dark";
+import style from "react-syntax-highlighter/dist/esm/styles/hljs/atom-one-dark-reasonable";
 import rehypeRaw from "rehype-raw";
 import remarkGfm from "remark-gfm";
 import useSWR, { Fetcher } from "swr";
@@ -76,7 +76,6 @@ export default function Article({ slug }: ArticleProps): JSX.Element {
         <Spacer size={36} />
         <ReactMarkdown
           components={{
-            a: (props): ReactNode => <Link {...props} target="_blank" />,
             pre: ({ children }): ReactNode => {
               const preChildren = children[0];
 
@@ -89,14 +88,17 @@ export default function Article({ slug }: ArticleProps): JSX.Element {
                 // @ts-ignore
                 props: { children: propChildren, className },
               } = preChildren;
+              const tmpLanguage =
+                typeof className === "string"
+                  ? className.replace("language-", "")
+                  : undefined;
+              const language = SyntaxHighlighter.supportedLanguages.find(
+                (supportedLanguage) => tmpLanguage === supportedLanguage,
+              );
 
               return (
                 <SyntaxHighlighter
-                  language={
-                    typeof className === "string"
-                      ? className.replace("language-", "")
-                      : undefined
-                  }
+                  language={language || "typescript"}
                   // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
                   style={style}
                   wrapLines={true}
@@ -108,6 +110,7 @@ export default function Article({ slug }: ArticleProps): JSX.Element {
             },
             table: Table,
           }}
+          linkTarget="_blank"
           rehypePlugins={[rehypeRaw]}
           remarkPlugins={[remarkGfm]}
         >
