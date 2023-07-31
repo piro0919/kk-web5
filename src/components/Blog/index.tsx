@@ -1,20 +1,16 @@
 "use client";
-import { Box, Flex, Heading, VStack } from "@kuma-ui/core";
+import { Box, Flex, Heading, Text, VStack } from "@kuma-ui/core";
 import axios, { AxiosResponse } from "axios";
 import { useCallback, useMemo } from "react";
 import InfiniteScroll, { Props } from "react-infinite-scroll-component";
-import LinesEllipsis from "react-lines-ellipsis";
-import responsiveHOC from "react-lines-ellipsis/lib/responsiveHOC";
 import { Oval } from "react-loader-spinner";
 import { BareFetcher } from "swr";
 import useSWRInfinite, { SWRInfiniteKeyLoader } from "swr/infinite";
-import styles from "./style.module.scss";
 import { GetArticlesResponseBody } from "@/app/articles/route";
 import NavLink from "@/components/NavLink";
 import getBreakpoints from "@/libs/getBreakpoints";
 import pageSize from "@/libs/pageSize";
 
-const ResponsiveEllipsis = responsiveHOC()(LinesEllipsis);
 const getKey: SWRInfiniteKeyLoader<GetArticlesResponseBody> = (
   pageIndex,
   previousPageData,
@@ -52,13 +48,18 @@ export default function Blog(): JSX.Element {
             <Heading as="h3" fontSize="2.4rem">
               {title}
             </Heading>
-            <ResponsiveEllipsis
-              className={styles.responsiveEllipsis}
-              component="span"
-              ellipsis="…"
-              maxLine={1}
-              text={text}
-            />
+            <Box display="table" width="100%">
+              <Text
+                color="colors.gray"
+                display="table-cell"
+                maxWidth="0px"
+                overflow="hidden"
+                textOverflow="ellipsis"
+                whiteSpace="nowrap"
+              >
+                {text}
+              </Text>
+            </Box>
             <Box fontSize="1.2rem">{date}</Box>
           </VStack>
         </NavLink>
