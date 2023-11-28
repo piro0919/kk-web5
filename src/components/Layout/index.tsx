@@ -1,7 +1,10 @@
 "use client";
 import { Box, Grid, Heading } from "@kuma-ui/core";
-import { ReactNode } from "react";
-import { useWindowSize } from "usehooks-ts";
+import { ReactNode, useEffect } from "react";
+import useMeasure from "react-use-measure";
+import { useScrollYPosition } from "react-use-scroll-position";
+import { useBoolean, useWindowSize } from "usehooks-ts";
+import Navigation from "../Navigation";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import MobileMenu from "@/components/MobileMenu";
@@ -12,7 +15,19 @@ export type LayoutProps = {
 };
 
 export default function Layout({ children }: LayoutProps): JSX.Element {
-  const { height } = useWindowSize();
+  const { height: windowHeight } = useWindowSize();
+  const scrollY = useScrollYPosition();
+  const [ref, { height }] = useMeasure();
+  const { setTrue: onIsFixedNavigation, value: isFixedNavigation } =
+    useBoolean(false);
+
+  useEffect(() => {
+    if (height === 0) {
+      return;
+    }
+
+    onIsFixedNavigation();
+  }, [height, onIsFixedNavigation]);
 
   return (
     <Box>
@@ -24,18 +39,13 @@ export default function Layout({ children }: LayoutProps): JSX.Element {
           lg: "auto 1fr auto",
           sm: "1fr",
         })}
-        minHeight={height || "100dvh"}
+        minHeight={windowHeight || "100dvh"}
         pb={getBreakpoints({
           lg: "0",
           sm: "48px",
         })}
       >
-        <Box
-          display={getBreakpoints({ lg: "block", sm: "none" })}
-          position="sticky"
-          top="0"
-          zIndex={1}
-        >
+        <Box display={getBreakpoints({ lg: "block", sm: "none" })}>
           <Header />
         </Box>
         <Box as="main">{children}</Box>
@@ -50,6 +60,19 @@ export default function Layout({ children }: LayoutProps): JSX.Element {
         width="100%"
       >
         <MobileMenu />
+      </Box>
+      <Box
+        display={getBreakpoints({ lg: "block", sm: "none" })}
+        left={0}
+        opacity={isFixedNavigation ? 1 : 0}
+        position="fixed"
+        top={scrollY > height ? 0 : height * -1}
+        transition={`${isFixedNavigation ? 250 : 0}ms`}
+        width="100%"
+      >
+        <div ref={ref}>
+          <Navigation />
+        </div>
       </Box>
     </Box>
   );

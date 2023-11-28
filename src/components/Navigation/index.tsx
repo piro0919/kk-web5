@@ -14,7 +14,7 @@ const montserrat = Montserrat({
   subsets: ["latin"],
 });
 
-export default function Header(): JSX.Element {
+export default function Navigation(): JSX.Element {
   const pathname = usePathname();
   const navLinks = useMemo(
     () =>
@@ -53,8 +53,16 @@ export default function Header(): JSX.Element {
   );
 
   return (
-    <HStack as="header" className={montserrat.className} justify="center">
-      <Box as="nav" py={getBreakpoints({ sm: 24, xl: 36 })}>
+    <HStack
+      as="nav"
+      bg="rgba(var(--color-black-text), 0.95)"
+      className={montserrat.className}
+      justify="center"
+      style={{
+        backdropFilter: "blur(1px)",
+      }}
+    >
+      <Box py={getBreakpoints({ sm: 16, xl: 24 })}>
         <HStack gap={getBreakpoints({ sm: 64, xl: 84 })}>{navLinks}</HStack>
       </Box>
     </HStack>
