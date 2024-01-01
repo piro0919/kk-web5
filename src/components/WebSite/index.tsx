@@ -4,27 +4,32 @@ import getBreakpoints from "@/libs/getBreakpoints";
 export default function WebSite(): JSX.Element {
   const items = [
     {
-      href: "https://www.natsuzolab.com/",
+      href: "https://www.natsuzolab.com",
+      name: "Higa Production",
+      text: "バーチャル YouTuber 事務所「Higa Production」のサイトを作成しました。",
+    },
+    {
+      href: "https://www.natsuzolab.com",
       name: "Natsuzolab",
       text: "作曲家「成田旬」さんのサイトを作成しました。",
     },
     {
-      href: "https://kanaohonten.vercel.app/",
+      href: "https://kanaohonten.vercel.app",
       name: "金尾本店",
       text: "広島県福山市で営業している魚屋「金尾本店」のサイトを作成しました。",
     },
     {
-      href: "https://www.nbhyakuhati.com/",
+      href: "https://www.nbhyakuhati.com",
       name: "7:08",
       text: "イラストレーター「7:08」さんのサイトを作成しました。",
     },
     {
-      href: "https://kontaniki.com/",
+      href: "https://kontaniki.com",
       name: "1stKontact",
       text: "イラストレーター「こんた」さんのサイトを作成しました。",
     },
     {
-      href: "https://hatake.kk-web.link/",
+      href: "https://hatake.kk-web.link",
       name: "はじめしゃちょーの畑 非公式ファンサイト",
       text: "YouTube チャンネル「はじめしゃちょーの畑」の非公式ファンサイトを作成しました。",
     },

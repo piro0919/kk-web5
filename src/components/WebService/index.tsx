@@ -4,47 +4,42 @@ import getBreakpoints from "@/libs/getBreakpoints";
 export default function WebService(): JSX.Element {
   const items = [
     {
-      href: "https://planning-poker.kk-web.link/",
+      href: "https://planning-poker.kk-web.link",
       name: "Planning Poker",
       text: "プランニングポーカーができるサービスです。",
     },
     {
-      href: "https://taicho.kk-web.link/",
-      name: "たいちょ",
-      text: "調子を管理してくれるサービスです。",
-    },
-    {
-      href: "https://recban.kk-web.link/",
+      href: "https://recban.kk-web.link",
       name: "りくばん！",
       text: "バンドメンバーを募集したり見つけたりすることができるサービスです。",
     },
     {
-      href: "https://omocoro-archive.kk-web.link/",
+      href: "https://omocoro-archive.kk-web.link",
       name: "オモコロアーカイブ",
       text: "メディアサイト「オモコロ」の記事をまとめたサービスです。",
     },
     {
-      href: "https://omocoro-daily.kk-web.link/",
+      href: "https://omocoro-daily.kk-web.link",
       name: "オモコロ&デイリーポータルＺ非公式リーダー",
       text: "メディアサイト「オモコロ」と「デイリーポータルＺ」の記事をまとめたサービスです。",
     },
     {
-      href: "https://on-memo.kk-web.link/",
+      href: "https://on-memo.kk-web.link",
       name: "おんめも",
       text: "様々なデバイスでメモを共有できるサービスです。",
     },
     {
-      href: "https://siritori-timer.kk-web.link/",
+      href: "https://siritori-timer.kk-web.link",
       name: "限界しりとりタイマー",
       text: "ボードゲーム「限界しりとりパーティー！」のタイマーとして使えるサービスです。",
     },
     {
-      href: "https://serifuya.kk-web.link/",
+      href: "https://serifuya.kk-web.link",
       name: "せりふや",
       text: "女の子のボイスをフリー素材として配布しているサービスです。",
     },
     {
-      href: "https://recigle.kk-web.link/",
+      href: "https://recigle.kk-web.link",
       name: "レシグル",
       text: "レシピを検索しやすくしてくれるサービスです。",
     },

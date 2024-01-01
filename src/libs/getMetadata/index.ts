@@ -20,7 +20,7 @@ export default function getMetadata({
       canonical: `https://kk-web.link${path}`,
     },
     applicationName: "kk-web",
-    authors: [{ name: "piro", url: "https://kk-web.link/" }],
+    authors: [{ name: "piro", url: "https://kk-web.link" }],
     creator: "piro",
     description,
     openGraph: {
