@@ -4,6 +4,7 @@ import "@szhsin/react-menu/dist/core.css";
 import "@szhsin/react-menu/dist/theme-dark.css";
 import "@szhsin/react-menu/dist/transitions/slide.css";
 import { Analytics } from "@vercel/analytics/react";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import "github-markdown-css";
 import localFont from "next/font/local";
 import NextTopLoader from "nextjs-toploader";
@@ -55,6 +56,7 @@ export default function RootLayout({ children }: RootLayoutProps): JSX.Element {
           shadow={false}
           showSpinner={false}
         />
+        <SpeedInsights />
       </body>
     </html>
   );
