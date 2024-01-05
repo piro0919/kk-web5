@@ -4,7 +4,7 @@ import getBreakpoints from "@/libs/getBreakpoints";
 export default function WebSite(): JSX.Element {
   const items = [
     {
-      href: "https://www.natsuzolab.com",
+      href: "https://www.higapro.jp",
       name: "Higa Production",
       text: "バーチャル YouTuber 事務所「Higa Production」のサイトを作成しました。",
     },
