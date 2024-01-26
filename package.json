@@ -22,7 +22,7 @@
     "@vercel/speed-insights": "1.0.2",
     "axios": "1.4.0",
     "commitlint-plugin-tense": "1.0.2",
-    "cookies-next": "2.1.2",
+    "cookies-next": "4.1.1",
     "dayjs": "1.11.9",
     "eslint": "8.47.0",
     "eslint-config-google": "0.14.0",
