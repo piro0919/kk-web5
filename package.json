@@ -40,7 +40,7 @@
     "eslint-plugin-unused-imports": "2.0.0",
     "github-markdown-css": "5.2.0",
     "husky": "8.0.3",
-    "lint-staged": "13.2.3",
+    "lint-staged": "15.2.2",
     "logrocket": "4.0.4",
     "logrocket-react": "5.0.1",
     "markdown-to-text": "0.1.1",
