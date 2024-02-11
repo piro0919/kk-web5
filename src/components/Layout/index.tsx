@@ -19,8 +19,6 @@ export default function Layout({ children }: LayoutProps): JSX.Element {
   const scrollY = useScrollYPosition();
   const [ref, { height }] = useMeasure();
 
-  console.log(scrollY, height);
-
   return (
     <Box>
       <Box height="0px" overflow="hidden" style={{ opacity: 0 }} width="0px">
