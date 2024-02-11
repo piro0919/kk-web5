@@ -1,9 +1,9 @@
 "use client";
 import { Box, Grid, Heading } from "@kuma-ui/core";
-import { ReactNode, useEffect } from "react";
+import { ReactNode } from "react";
 import useMeasure from "react-use-measure";
 import { useScrollYPosition } from "react-use-scroll-position";
-import { useBoolean, useWindowSize } from "usehooks-ts";
+import { useWindowSize } from "usehooks-ts";
 import Navigation from "../Navigation";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
@@ -18,16 +18,8 @@ export default function Layout({ children }: LayoutProps): JSX.Element {
   const { height: windowHeight } = useWindowSize();
   const scrollY = useScrollYPosition();
   const [ref, { height }] = useMeasure();
-  const { setTrue: onIsFixedNavigation, value: isFixedNavigation } =
-    useBoolean(false);
 
-  useEffect(() => {
-    if (height === 0) {
-      return;
-    }
-
-    onIsFixedNavigation();
-  }, [height, onIsFixedNavigation]);
+  console.log(scrollY, height);
 
   return (
     <Box>
@@ -64,10 +56,10 @@ export default function Layout({ children }: LayoutProps): JSX.Element {
       <Box
         display={getBreakpoints({ lg: "block", sm: "none" })}
         left={0}
-        opacity={isFixedNavigation ? 1 : 0}
         position="fixed"
-        top={scrollY > height ? 0 : height * -1}
-        transition={`${isFixedNavigation ? 250 : 0}ms`}
+        top={scrollY > height ? height : 0}
+        transform="translateY(-100%)"
+        transition="250ms"
         width="100%"
       >
         <div ref={ref}>
