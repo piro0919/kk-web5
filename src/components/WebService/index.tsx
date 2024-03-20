@@ -4,6 +4,11 @@ import getBreakpoints from "@/libs/getBreakpoints";
 export default function WebService(): JSX.Element {
   const items = [
     {
+      href: "https://kantanka.kk-web.link",
+      name: "かんたんか",
+      text: "短歌が投稿できるサービスです。",
+    },
+    {
       href: "https://planning-poker.kk-web.link",
       name: "Planning Poker",
       text: "プランニングポーカーができるサービスです。",
