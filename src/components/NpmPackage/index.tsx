@@ -4,6 +4,11 @@ import getBreakpoints from "@/libs/getBreakpoints";
 export default function NpmPackage(): JSX.Element {
   const items = [
     {
+      href: "https://www.npmjs.com/package/@piro0919/next-unused",
+      name: "@piro0919/next-unused",
+      text: "Next.js を使用したプロジェクト内で使用されていないコンポーネントファイルなどを洗い出します。",
+    },
+    {
       href: "https://www.npmjs.com/package/next-firebase-authentication",
       name: "next-firebase-authentication",
       text: "Next.js と Firebase Authentication を容易に繋ぎこむ独自フックを提供します。",
