@@ -43,7 +43,7 @@
   "devDependencies": {
     "@commitlint/cli": "17.7.1",
     "@commitlint/config-conventional": "17.7.0",
-    "@piro0919/next-unused": "0.0.1",
+    "@piro0919/next-unused": "0.2.1",
     "@total-typescript/ts-reset": "0.4.2",
     "@types/logrocket-react": "3.0.0",
     "@types/node": "20.4.10",
@@ -100,6 +100,7 @@
   "private": true,
   "scripts": {
     "build": "ANALYZE=true next build",
+    "check:unused": "next-unused --error-on-unused-files",
     "dev": "next dev",
     "find:unused": "next-unused",
     "lint": "next lint",
