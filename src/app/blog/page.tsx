@@ -41,7 +41,7 @@ async function getArticles(): Promise<GetArticlesData> {
         return {
           date,
           slug,
-          text: removeMarkdown(content).slice(0, 100),
+          text: removeMarkdown(content.slice(0, 200)),
           title,
         };
       }),

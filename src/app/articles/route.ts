@@ -41,7 +41,7 @@ export async function GET(
         return {
           date,
           slug,
-          text: removeMarkdown(content).slice(0, 100),
+          text: removeMarkdown(content.slice(0, 200)),
           title,
         };
       }),
