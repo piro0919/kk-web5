@@ -1,41 +1,43 @@
 "use client";
 import { ErrorMessage } from "@hookform/error-message";
+import { zodResolver } from "@hookform/resolvers/zod";
 import { Box, Button, Flex, Heading, Input, Text, VStack } from "@kuma-ui/core";
-import { ForwardedRef, forwardRef } from "react";
-import { Controller, SubmitHandler, useForm } from "react-hook-form";
+import { setCookie } from "cookies-next";
+import { useRef } from "react";
+import ReCAPTCHA from "react-google-recaptcha";
+import { Controller, Form, useForm } from "react-hook-form";
 import TextareaAutosize from "react-textarea-autosize";
-import Reaptcha, { Props } from "reaptcha";
+import { Id, toast } from "react-toastify";
+import { z } from "zod";
 import styles from "./style.module.scss";
+import { env } from "@/env";
 
-type FieldValues = {
-  email: string;
-  message: string;
-  name: string;
-  subject: string;
-};
+const schema = z.object({
+  email: z.string().email(),
+  message: z.string().min(1),
+  name: z.string().min(1),
+  subject: z.string().min(1),
+});
 
-export type ContactProps = Pick<Props, "onVerify"> & {
-  isSubmitting: boolean;
-  onSubmit: SubmitHandler<FieldValues>;
-};
+type FieldTypes = z.infer<typeof schema>;
 
-function Contact(
-  { isSubmitting, onSubmit, onVerify }: ContactProps,
-  ref: ForwardedRef<Reaptcha>,
-): JSX.Element {
+export default function Contact(): JSX.Element {
   const {
     control,
-    formState: { errors },
-    handleSubmit,
+    formState: { errors, isSubmitting },
     register,
-  } = useForm<FieldValues>({
+  } = useForm<FieldTypes>({
     defaultValues: {
       email: "",
       message: "",
       name: "",
       subject: "",
     },
+    progressive: true,
+    resolver: zodResolver(schema),
   });
+  const ref = useRef<ReCAPTCHA>(null);
+  const toastId = useRef<Id>(null);
 
   return (
     <>
@@ -50,16 +52,59 @@ function Contact(
         pt={12}
         px={12}
       >
-        <form
+        <Form
+          action="/email"
           className={styles.form}
-          // eslint-disable-next-line @typescript-eslint/no-misused-promises
-          onSubmit={handleSubmit(onSubmit)}
+          control={control}
+          onError={(): void => {
+            if (!toastId.current) {
+              return;
+            }
+
+            toast.update(toastId.current, {
+              autoClose: 5000,
+              isLoading: false,
+              render: "送信に失敗しました",
+              type: "error",
+            });
+          }}
+          onSubmit={async (): Promise<void> => {
+            if (!ref.current) {
+              return;
+            }
+
+            const token = await ref.current.executeAsync();
+
+            if (typeof token !== "string") {
+              return;
+            }
+
+            setCookie("token", token);
+
+            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+            // @ts-ignore
+            toastId.current = toast("送信しています…", {
+              autoClose: false,
+              isLoading: true,
+            });
+          }}
+          onSuccess={(): void => {
+            if (!toastId.current) {
+              return;
+            }
+
+            toast.update(toastId.current, {
+              autoClose: 5000,
+              isLoading: false,
+              render: "メッセージを送信しました",
+              type: "success",
+            });
+          }}
         >
-          {process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY ? (
-            <Reaptcha
-              onVerify={onVerify}
+          {env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY ? (
+            <ReCAPTCHA
               ref={ref}
-              sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}
+              sitekey={env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}
               size="invisible"
               theme="dark"
             />
@@ -88,9 +133,6 @@ function Contact(
                       py={4}
                     />
                   )}
-                  rules={{
-                    required: "お名前を入力してください",
-                  }}
                 />
                 <ErrorMessage
                   errors={errors}
@@ -128,9 +170,6 @@ function Contact(
                       type="email"
                     />
                   )}
-                  rules={{
-                    required: "メールアドレスを入力してください",
-                  }}
                 />
                 <ErrorMessage
                   errors={errors}
@@ -167,9 +206,6 @@ function Contact(
                       py={4}
                     />
                   )}
-                  rules={{
-                    required: "件名を入力してください",
-                  }}
                 />
                 <ErrorMessage
                   errors={errors}
@@ -193,9 +229,7 @@ function Contact(
                   </Box>
                 </Box>
                 <TextareaAutosize
-                  {...register("message", {
-                    required: "本文を入力してください",
-                  })}
+                  {...register("message")}
                   className={styles.textareaAutosize}
                   id="message"
                   minRows={6}
@@ -219,7 +253,6 @@ function Contact(
               <Button
                 bg="colors.brandBlue"
                 color="colors.lightWhite"
-                disabled={isSubmitting}
                 fontFamily="arial"
                 opacity={isSubmitting ? 0.5 : 1}
                 px={24}
@@ -230,10 +263,8 @@ function Contact(
               </Button>
             </Flex>
           </VStack>
-        </form>
+        </Form>
       </Flex>
     </>
   );
 }
-
-export default forwardRef<Reaptcha, ContactProps>(Contact);

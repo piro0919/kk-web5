@@ -1,8 +1,8 @@
-import Client from "./client";
+import Contact from "@/components/Contact";
 import getMetadata from "@/libs/getMetadata";
 
 export const metadata = getMetadata({ path: "/contact", subTitle: "CONTACT" });
 
 export default function Page(): JSX.Element {
-  return <Client />;
+  return <Contact />;
 }

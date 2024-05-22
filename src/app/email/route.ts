@@ -1,8 +1,9 @@
 import axios from "axios";
 import { NextRequest, NextResponse } from "next/server";
 import nodemailer from "nodemailer";
+import { env } from "@/env";
 
-export type PostEmailRequestBody = {
+export type PostEmailRequestFormData = {
   email: string;
   message: string;
   name: string;
@@ -19,7 +20,7 @@ export async function POST(
 ): Promise<NextResponse<PostEmailResponseBody>> {
   const token = request.cookies.get("token");
 
-  if (!process.env.RECAPTCHA_SECRET_KEY || !token) {
+  if (!env.RECAPTCHA_SECRET_KEY || !token) {
     return NextResponse.json({ result: false }, { status: 500 });
   }
 
@@ -28,21 +29,24 @@ export async function POST(
     // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
     data: { success },
   } = await axios.post(
-    `https://www.google.com/recaptcha/api/siteverify?secret=${process.env.RECAPTCHA_SECRET_KEY}&response=${value}`,
+    `https://www.google.com/recaptcha/api/siteverify?secret=${env.RECAPTCHA_SECRET_KEY}&response=${value}`,
   );
 
   if (!success) {
     return NextResponse.json({ result: false }, { status: 500 });
   }
 
-  const { email, message, name, subject } =
-    (await request.json()) as PostEmailRequestBody;
+  const data = await request.formData();
+  const email = data.get("email") as PostEmailRequestFormData["email"];
+  const message = data.get("message") as PostEmailRequestFormData["message"];
+  const name = data.get("name") as PostEmailRequestFormData["name"];
+  const subject = data.get("subject") as PostEmailRequestFormData["subject"];
 
   try {
     const transporter = nodemailer.createTransport({
       auth: {
-        pass: process.env.NODEMAILER_AUTH_PASS,
-        user: process.env.NODEMAILER_AUTH_USER,
+        pass: env.NODEMAILER_AUTH_PASS,
+        user: env.NODEMAILER_AUTH_USER,
       },
       port: 465,
       secure: true,
@@ -53,7 +57,7 @@ export async function POST(
       replyTo: `${name} <${email}>`,
       subject: `【kk-web】${subject}`,
       text: message,
-      to: process.env.NODEMAILER_AUTH_USER,
+      to: env.NODEMAILER_AUTH_USER,
     });
 
     return NextResponse.json({ result: true }, { status: 200 });

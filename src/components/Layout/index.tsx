@@ -1,14 +1,28 @@
 "use client";
 import { Box, Grid, Heading } from "@kuma-ui/core";
+import i18next from "i18next";
 import { ReactNode } from "react";
 import useMeasure from "react-use-measure";
 import { useScrollYPosition } from "react-use-scroll-position";
 import { useWindowSize } from "usehooks-ts";
+import { z } from "zod";
+import { zodI18nMap } from "zod-i18n-map";
+import translation from "zod-i18n-map/locales/ja/zod.json";
 import Navigation from "../Navigation";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import MobileMenu from "@/components/MobileMenu";
 import getBreakpoints from "@/libs/getBreakpoints";
+
+// eslint-disable-next-line @typescript-eslint/no-floating-promises
+i18next.init({
+  lng: "ja",
+  resources: {
+    ja: { zod: translation },
+  },
+});
+
+z.setErrorMap(zodI18nMap);
 
 export type LayoutProps = {
   children: ReactNode;
