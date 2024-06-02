@@ -1,8 +1,7 @@
 import { createEnv } from "@t3-oss/env-nextjs";
 import { z } from "zod";
 
-// eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, import/prefer-default-export
-export const env = createEnv({
+const env = createEnv({
   client: {
     NEXT_PUBLIC_GA_MEASUREMENT_ID: z.string().min(1),
     NEXT_PUBLIC_HOTJAR_ID: z.string().min(1),
@@ -24,3 +23,5 @@ export const env = createEnv({
     RECAPTCHA_SECRET_KEY: z.string().min(1),
   },
 });
+
+export default env;

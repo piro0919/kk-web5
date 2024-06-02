@@ -4,6 +4,11 @@ import getBreakpoints from "@/libs/getBreakpoints";
 export default function NpmPackage(): JSX.Element {
   const items = [
     {
+      href: "https://www.npmjs.com/package/use-show-window-size",
+      name: "use-show-window-size",
+      text: "画面右上にウィンドウサイズをリアルタイムで表示する独自フックを提供します。",
+    },
+    {
       href: "https://www.npmjs.com/package/@piro0919/next-unused",
       name: "@piro0919/next-unused",
       text: "Next.js を使用したプロジェクト内で使用されていないコンポーネントファイルなどを洗い出します。",

@@ -1,7 +1,7 @@
 import axios from "axios";
 import { NextRequest, NextResponse } from "next/server";
 import nodemailer from "nodemailer";
-import { env } from "@/env";
+import env from "@/env";
 
 export type PostEmailRequestFormData = {
   email: string;

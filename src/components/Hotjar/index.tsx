@@ -1,7 +1,7 @@
 "use client";
 import { Fragment, useEffect } from "react";
 import { hotjar } from "react-hotjar";
-import { env } from "@/env";
+import env from "@/env";
 
 export default function Hotjar(): JSX.Element {
   useEffect(() => {

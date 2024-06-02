@@ -10,7 +10,7 @@ import TextareaAutosize from "react-textarea-autosize";
 import { Id, toast } from "react-toastify";
 import { z } from "zod";
 import styles from "./style.module.scss";
-import { env } from "@/env";
+import env from "@/env";
 
 const schema = z.object({
   email: z.string().email(),

@@ -2,7 +2,7 @@
 import LogRocketComponent from "logrocket";
 import setupLogRocketReact from "logrocket-react";
 import { Fragment, useEffect } from "react";
-import { env } from "@/env";
+import env from "@/env";
 
 export default function LogRocket(): JSX.Element {
   useEffect(() => {
