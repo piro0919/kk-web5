@@ -12,6 +12,7 @@
   "ignorePatterns": ["*.d.ts", "*.js", "*.mjs"],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
+    "EXPERIMENTAL_useProjectService": true,
     "project": ["./tsconfig.json"],
     "warnOnUnsupportedTypeScriptVersion": false
   },
