@@ -85,7 +85,7 @@
     "sass": "1.65.1",
     "sass-mq": "6.0.0",
     "secretlint": "8.2.4",
-    "stylelint": "15.10.2",
+    "stylelint": "15.11.0",
     "stylelint-config-css-modules": "4.3.0",
     "stylelint-config-prettier-scss": "1.0.0",
     "stylelint-config-recommended-scss": "12.0.0",
@@ -100,10 +100,10 @@
   "name": "kk-web5",
   "overrides": {
     "stylelint-css-modules-no-global-scoped-selector": {
-      "stylelint": "15.10.2"
+      "stylelint": "15.11.0"
     },
     "stylelint-sass-render-errors": {
-      "stylelint": "15.10.2"
+      "stylelint": "15.11.0"
     }
   },
   "private": true,
