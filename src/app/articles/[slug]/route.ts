@@ -15,7 +15,7 @@ type Context = {
 
 // eslint-disable-next-line import/prefer-default-export
 export async function GET(
-  request: NextRequest,
+  _: NextRequest,
   { params: { slug } }: Context,
 ): Promise<NextResponse<GetArticleResponseBody>> {
   const markdownPath = path.join(

@@ -2,7 +2,7 @@ import { Metadata } from "next";
 
 export type GetMetadataParams = {
   description?: string;
-  imageIndex?: number;
+  imageUrl?: string;
   path?: string;
   subTitle?: string;
   type?: "article" | "website";
@@ -10,7 +10,7 @@ export type GetMetadataParams = {
 
 export default function getMetadata({
   description = "Freelance front end developer and video creator piro's website",
-  imageIndex = 0,
+  imageUrl = "https://kk-web.link/kk-web_0.png",
   path = "/",
   subTitle = "",
   type = "article",
@@ -27,7 +27,7 @@ export default function getMetadata({
       description,
       images: [
         {
-          url: `https://kk-web.link/kk-web_${imageIndex}.png`,
+          url: imageUrl,
         },
       ],
       siteName: "kk-web",
@@ -42,7 +42,7 @@ export default function getMetadata({
     title: `${subTitle && `${subTitle} - `}kk-web`,
     twitter: {
       card: "summary_large_image",
-      images: `https://kk-web.link/kk-web_${imageIndex}.png`,
+      images: imageUrl,
     },
   };
 }

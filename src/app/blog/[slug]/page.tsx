@@ -42,11 +42,11 @@ export async function generateMetadata({
   params: { slug },
 }: PageProps): Promise<Metadata> {
   const { content, title } = await getArticle({ slug });
-  const imageIndex = (parseInt(slug, 10) % 2) + 1;
 
   return getMetadata({
     description: content.slice(0, 300),
-    imageIndex,
+    // imageUrl: `http://localhost:3000/articles/${slug}/image`,
+    imageUrl: `https://kk-web.link/articles/${slug}/image`,
     path: `/blog/${slug}`,
     subTitle: title,
   });

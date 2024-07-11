@@ -8,6 +8,7 @@
     "@szhsin/react-menu": "4.0.3",
     "@t3-oss/env-nextjs": "0.10.1",
     "@vercel/analytics": "1.0.2",
+    "@vercel/og": "0.6.2",
     "@vercel/speed-insights": "1.0.2",
     "axios": "1.4.0",
     "cookies-next": "2.1.2",
