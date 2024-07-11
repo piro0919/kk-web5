@@ -10,6 +10,17 @@
     "prettier"
   ],
   "ignorePatterns": ["*.d.ts", "*.js", "*.mjs"],
+  "overrides": [
+    {
+      "extends": ["plugin:markdownlint/recommended"],
+      "files": ["*.md"],
+      "parser": "eslint-plugin-markdownlint/parser",
+      "rules": {
+        "first-line-h1": "off",
+        "MD025": "off"
+      }
+    }
+  ],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
     "EXPERIMENTAL_useProjectService": true,
