@@ -52,7 +52,7 @@
     "@piro0919/next-unused": "0.2.1",
     "@secretlint/secretlint-rule-preset-recommend": "8.2.4",
     "@total-typescript/ts-reset": "0.4.2",
-    "@types/logrocket-react": "3.0.0",
+    "@types/logrocket-react": "3.0.3",
     "@types/node": "20.4.10",
     "@types/nodemailer": "6.4.9",
     "@types/react": "18.2.20",
