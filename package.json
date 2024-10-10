@@ -11,7 +11,7 @@
     "@vercel/og": "0.6.2",
     "@vercel/speed-insights": "1.0.2",
     "axios": "1.4.0",
-    "cookies-next": "2.1.2",
+    "cookies-next": "4.3.0",
     "dayjs": "1.11.9",
     "github-markdown-css": "5.2.0",
     "i18next": "23.11.5",
