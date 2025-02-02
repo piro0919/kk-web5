@@ -47,8 +47,8 @@
     "zod-i18n-map": "2.27.0"
   },
   "devDependencies": {
-    "@commitlint/cli": "17.7.1",
-    "@commitlint/config-conventional": "17.7.0",
+    "@commitlint/cli": "19.7.1",
+    "@commitlint/config-conventional": "19.7.1",
     "@piro0919/next-unused": "0.2.1",
     "@secretlint/secretlint-rule-preset-recommend": "8.2.4",
     "@total-typescript/ts-reset": "0.4.2",
