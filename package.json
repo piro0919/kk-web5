@@ -75,7 +75,7 @@
     "eslint-plugin-promise": "6.1.1",
     "eslint-plugin-sort-destructure-keys": "1.5.0",
     "eslint-plugin-sort-keys-fix": "1.1.2",
-    "eslint-plugin-typescript-sort-keys": "2.3.0",
+    "eslint-plugin-typescript-sort-keys": "3.3.0",
     "eslint-plugin-unused-imports": "2.0.0",
     "lefthook": "1.11.3",
     "next-sitemap": "4.2.2",
