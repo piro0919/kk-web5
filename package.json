@@ -78,7 +78,7 @@
     "eslint-plugin-typescript-sort-keys": "2.3.0",
     "eslint-plugin-unused-imports": "2.0.0",
     "lefthook": "1.11.3",
-    "next-sitemap": "4.2.2",
+    "next-sitemap": "4.2.3",
     "prettier": "3.0.1",
     "secretlint": "8.2.4",
     "stylelint": "16.16.0",
