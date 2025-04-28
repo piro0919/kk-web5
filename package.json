@@ -60,7 +60,7 @@
     "@typescript-eslint/parser": "5.62.0",
     "@uphold/commitlint-config": "1.1.1",
     "better-typescript-lib": "2.7.0",
-    "commitlint-plugin-tense": "1.0.2",
+    "commitlint-plugin-tense": "1.0.6",
     "eslint": "8.47.0",
     "eslint-config-google": "0.14.0",
     "eslint-config-next": "13.4.13",
